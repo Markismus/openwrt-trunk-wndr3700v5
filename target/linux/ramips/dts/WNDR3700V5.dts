@@ -90,6 +90,11 @@
    gpio-leds {
        compatible = "gpio-leds";
 
+       wps {
+           label = "wndr3700v5:green:wps";
+           gpios = <&gpio0 12 0>;
+       };
+
        power {
            label = "wndr3700v5:green:power";
            gpios = <&gpio0 18 0>;
@@ -103,19 +108,27 @@
        #size-cells = <0>;
        poll-interval = <20>;
 
-       rfkill {
-           label = "rfkill";
-           gpios = <&gpio0 8 0>;
-           linux,code = <0xf7>;
+       wps {
+           label = "wndr3700v5:wps";
+           gpios = <&gpio0 7 0>;
        };
 
+       wifi {
+           label = "wndr3700v5:wifi";
+           gpios = <&gpio0 8 0>;
+       };
+
+       reset {
+           label = "wndr3700v5:reset";
+           gpios = <&gpio0 14 0>;
+       };
    };
 
    gpio_export {
        compatible = "gpio-export";
        #size-cells = <0>;
 
-           usbpower {
+       usbpower {
            gpio-export,name = "usbpower";
            gpio-export,output = <1>;
            gpios = <&gpio0 10 1>;
